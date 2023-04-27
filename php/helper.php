@@ -5,6 +5,16 @@ use Illuminate\Support\Facades\Storage;
 
 
 
+if (!function_exists('saveFile')) {
+    function saveFile($photo,$folder)
+    {
+        $file_extension = $photo->getClientOriginalExtension();
+        $file_name =  $folder.'/'.rand('1','9999').time().'.'.$file_extension;
+        $photo -> move($folder,$file_name);
+
+        return $file_name;
+    }
+}
 
 
 
